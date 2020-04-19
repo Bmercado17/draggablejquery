@@ -6,6 +6,9 @@ body {
 .hidden {
     display:none;
 }
+
+/* BUTTON START QUIZE  */
+
 .content-container .item {
     width: 100%;
     height:100%;
@@ -23,4 +26,36 @@ body {
     transform: translate(-50%, -50%);
     text-align: center;
     width: 190px;
+}
+.content-container .start-quiz {
+    border: 3px solid gray;
+    padding: 3px;
+    border-radius: 40px;
+    color: gray;
+    cursor: pointer;
+}
+.start-quiz.started {
+    background: indigo;
+    color: white;
+}
+/* PROGRESS BAR AND ERROR */
+.error {
+    position:fixed;
+    bottom:25px;
+    width: 100%;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    display:none; 
+}
+.progress {
+    position: fixed;
+    bottom:0px;
+    background: rgb(208, 236, 208);
+    width: 100%;  
+}
+.bar {
+    width: 0px;
+    height: 20px;
+    background: green;
 }
