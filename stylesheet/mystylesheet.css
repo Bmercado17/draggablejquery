@@ -38,6 +38,28 @@ body {
     background: indigo;
     color: white;
 }
+/* questions*/
+.options {
+    height: 200px;
+
+}
+.options div {
+    display: none;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #3f51b5;
+    transition: all 0.2s ease;
+
+}
+
+.options div.active {
+    color: #007fff;
+    background: #313131;
+
+}
+.next-question {
+    cursor: pointer;
+}
 /* PROGRESS BAR AND ERROR */
 .error {
     position:fixed;
@@ -58,4 +80,10 @@ body {
     width: 0px;
     height: 20px;
     background: green;
+}
+.panel-two .wrapper,
+.panel-three .wrapper,
+.panel-four .wrapper,
+.panel-five .wrapper {
+    display:none;
 }
