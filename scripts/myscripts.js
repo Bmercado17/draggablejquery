@@ -9,8 +9,11 @@ $(document).ready(function(){
 
             $(".start-quiz").on("click",function(){
                 showPanel(1)
+                listenNext();
             })
         }
+
+
         this.showPanel = function(position){ //the position is to show the current panel
             var current = $('div[data-panel="'+ (position -1) +'"]') //this is to hide and move to the next panel
             current.find(".wrapper").animate({left:"-=100px", opacity:0},800,function(){
@@ -41,8 +44,31 @@ $(document).ready(function(){
 
             childrens.on("click", function(){
                 childrens.removeClass('active')
+                next.addClass('valid');
                 $(this).addClass('active');
                  })
+        }
+        this.listenNext = function(){
+            $('.next-question').on("click", function(){
+                var next= $(this).data("next");
+
+                if (validateSelection($(this))){
+                    showPanel(next)
+                }
+            });
+
+
+            this.validateSelection = function($this){
+                var parents = $this.parents().eq(1);
+                if(parents.hasClass("valid")){
+                    return true;
+                }else{
+                    $(".error").fadeIn("400", function(){
+                        $(this).delay(1500).fadeOut("400")
+                    })
+                    return false;
+                }
+            }
         }
         loadQuiz();
 
