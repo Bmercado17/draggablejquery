@@ -2,6 +2,10 @@ $(document).ready(function(){
    
     (function startQuiz (){
 
+        this.settings = {
+            results: []
+        }
+
         this.loadQuiz = function(){
             $(".panel-one h1").show('drop', 1000,function(){
                 $(".start-quiz").addClass("started", 800);
@@ -54,6 +58,7 @@ $(document).ready(function(){
 
                 if (validateSelection($(this))){
                     showPanel(next)
+                    showProgressAndStore(next)
                 }
             });
 
@@ -69,6 +74,17 @@ $(document).ready(function(){
                     return false;
                 }
             }
+        }
+        this.showProgressAndStore = function(panel) {
+            $('.progress .bar').animate({"width": "+=25%"}, 600);
+
+            var options = $('div[data-panel="'+ (panel -1) +'"]').find('.options');
+            options.find('div').each(function(i, el){ //we have access to ea div within parents ^^logic above
+                if($(this).hasClass('active')){
+                   settings.results.push( $(this).text());
+                   
+                }
+            })
         }
         loadQuiz();
 
